@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumen HTML - SMA Negeri 2 Playen</title>
+    <style>
+        /* Reset dasar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Styling dari user */
+        body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    color: #1a5f7a;
+}
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPP Interaktif: Menjelajah Alam Nusantara</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #4CAF50;
+            --accent-color: #FF9800;
+            --light-color: #E8F5E9;
+            --dark-color: #1B5E20;
+            --text-color: #333;
+            --light-text: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 30px 0;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .principles {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .principle-card {
+            background-color: rgba(255,255,255,0.15);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.25);
+        }
+        
+        .principle-card i {
+            font-size: 1.5rem;
+        }
+        
+        .principle-card.active {
+            background-color: rgba(255,255,255,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+        
+        .content-area {
+            flex: 2;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--accent-color);
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 20px 0 10px;
+        }
+        
+        .menu-item {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .menu-item:hover {
+            background-color: #d4edda;
+            border-left-color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        .menu-item.active {
+            background-color: #d4edda;
+            border-left-color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .info-box {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .info-box.warning {
+            background-color: #FFF3CD;
+            border-left-color: #FFC107;
+        }
+        
+        .info-box.success {
+            background-color: #D1ECF1;
+            border-left-color: #0CA678;
+        }
+        
+        .activity-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+            transition: transform 0.3s;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .activity-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .badge-berkesadaran {
+            background-color: #E3F2FD;
+            color: #1565C0;
+        }
+        
+        .badge-bermakna {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+        
+        .badge-menggembirakan {
+            background-color: #FFF3E0;
+            color: #EF6C00;
+        }
+        
+        .interactive-section {
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: #e9ecef;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .flora-fauna-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .species-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .species-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .species-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .species-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .species-zone {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            padding: 3px 10px;
+            background-color: #f1f8e9;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .quiz-option {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .quiz-option:hover {
+            background-color: #e9ecef;
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background-color: #e8f5e9;
+        }
+        
+        .quiz-result {
+            display: none;
+            padding: 20px;
+            background-color: #d4edda;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+        
+        .map-container {
+            height: 300px;
+            background-color: #e9f7e9;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Map_of_Indonesia.svg/800px-Map_of_Indonesia.svg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+        }
+        
+        .zone-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+        }
+        
+        .zone-western {
+            background-color: #E53935;
+            top: 40%;
+            left: 25%;
+        }
+        
+        .zone-central {
+            background-color: #FB8C00;
+            top: 55%;
+            left: 50%;
+        }
+        
+        .zone-eastern {
+            background-color: #43A047;
+            top: 70%;
+            left: 75%;
+        }
+        
+        .zone-info {
+            position: absolute;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 10;
+            width: 250px;
+        }
+        
+        .reflection-journal {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .journal-prompt {
+            font-style: italic;
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--light-text);
+            border-top: 1px solid #dee2e6;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .principles {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .principle-card {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1><i class="fas fa-leaf"></i> Menjelajah Alam Nusantara</h1>
+                <p class="subtitle">Persebaran Flora dan Fauna di Indonesia - RPP Interaktif dengan Pendekatan Deep Learning</p>
+                
+                <div class="principles">
+                    <div class="principle-card active" id="berkesadaran-card">
+                        <i class="fas fa-brain"></i>
+                        <span>Berkesadaran</span>
+                    </div>
+                    <div class="principle-card" id="bermakna-card">
+                        <i class="fas fa-heart"></i>
+                        <span>Bermakna</span>
+                    </div>
+                    <div class="principle-card" id="menggembirakan-card">
+                        <i class="fas fa-smile"></i>
+                        <span>Menggembirakan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <!-- Sidebar Menu -->
+            <div class="sidebar">
+                <h2><i class="fas fa-bars"></i> Menu Pembelajaran</h2>
+                
+                <div class="menu-item active" data-target="rpp-content">
+                    <i class="fas fa-book-open"></i> RPP Asli
+                </div>
+                
+                <div class="menu-item" data-target="analysis-content">
+                    <i class="fas fa-chart-bar"></i> Analisis & Saran
+                </div>
+                
+                <div class="menu-item" data-target="material-content">
+                    <i class="fas fa-seedling"></i> Materi Pembelajaran
+                </div>
+                
+                <div class="menu-item" data-target="activities-content">
+                    <i class="fas fa-tasks"></i> Aktivitas Interaktif
+                </div>
+                
+                <div class="menu-item" data-target="assessment-content">
+                    <i class="fas fa-clipboard-check"></i> Asesmen
+                </div>
+                
+                <div class="menu-item" data-target="resources-content">
+                    <i class="fas fa-download"></i> Sumber & Lampiran
+                </div>
+                
+                <div class="info-box success">
+                    <h4><i class="fas fa-lightbulb"></i> Tips Penggunaan</h4>
+                    <p>Gunakan menu di samping untuk menavigasi konten. Setiap bagian memiliki aktivitas interaktif untuk memperdalam pemahaman.</p>
+                </div>
+                
+                <div class="interactive-section">
+                    <h4><i class="fas fa-gamepad"></i> Progress Pembelajaran</h4>
+                    <div style="margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Penyelesaian Modul</span>
+                            <span id="progress-percent">0%</span>
+                        </div>
+                        <div style="height: 10px; background-color: #e9ecef; border-radius: 5px; overflow: hidden;">
+                            <div id="progress-bar" style="height: 100%; width: 0%; background-color: var(--primary-color); transition: width 0.5s;"></div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" id="mark-complete" style="width: 100%; margin-top: 10px;">
+                        <i class="fas fa-check-circle"></i> Tandai Selesai
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="content-area">
+                <!-- RPP Asli Content -->
+                <div id="rpp-content" class="content-section active">
+                    <h2><i class="fas fa-file-alt"></i> Rencana Pelaksanaan Pembelajaran</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> Identitas RPP</h4>
+                        <p><strong>Penyusun:</strong> Nurul Qomariyah, S.Pd.</p>
+                        <p><strong>Sekolah:</strong> SMA Negeri 2 Playen</p>
+                        <p><strong>Mata Pelajaran:</strong> Biologi</p>
+                        <p><strong>Kelas/Semester:</strong> X / 1</p>
+                        <p><strong>Alokasi Waktu:</strong> 1 pertemuan (2 × 45 menit)</p>
+                    </div>
+                    
+                    <h3>A. Identitas</h3>
+                    <p>RPP dengan struktur Deep Learning ini dirancang untuk membahas "Persebaran Flora dan Fauna di Indonesia" dengan pendekatan yang berkesadaran, bermakna, dan menggembirakan.</p>
+                    
+                    <h3>B. Identifikasi</h3>
+                    <p><strong>1. Murid:</strong> Memiliki pengetahuan awal tentang jenis makhluk hidup dan peta Indonesia dari pelajaran Geografi.</p>
+                    <p><strong>2. Materi Pelajaran:</strong> Mencakup identifikasi flora dan fauna berdasarkan persebarannya di Indonesia, ancaman yang terjadi, dan upaya pelestarian.</p>
+                    
+                    <h3>C. Desain Pembelajaran</h3>
+                    <p><strong>Capaian Pembelajaran:</strong> Menerapkan prinsip klasifikasi dan strategi pelestarian keanekaragaman hayati.</p>
+                    <p><strong>Tujuan Pembelajaran:</strong> Murid mampu menganalisis data dan informasi tentang persebaran flora dan fauna di Indonesia.</p>
+                    <p><strong>Praktik Pedagogis:</strong> Pembelajaran kolaboratif dengan tipe Teams Games Tournament dan diskusi kelompok.</p>
+                    
+                    <h3>D. Pengalaman Belajar</h3>
+                    <p><strong>Kegiatan Awal:</strong> Persiapan kelas, penggalian pengetahuan awal, motivasi, dan penyampaian tujuan.</p>
+                    <p><strong>Kegiatan Inti:</strong> Pemahaman melalui video, aplikasi melalui diskusi kelompok, dan refleksi.</p>
+                    <p><strong>Kegiatan Penutup:</strong> Pembuatan mind mapping dan penutupan dengan rasa syukur.</p>
+                    
+                    <h3>E. Asesmen Pembelajaran</h3>
+                    <p><strong>Asesmen Awal:</strong> Kuis melalui Mentimeter (4 soal).</p>
+                    <p><strong>Asesmen Proses:</strong> Observasi saat diskusi.</p>
+                    <p><strong>Asesmen Akhir:</strong> Kuis/turnamen melalui Quizizz (13 soal).</p>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-video"></i> Video Pembelajaran</h4>
+                        <p>Untuk mendukung kegiatan awal, tayangkan video tentang keanekaragaman flora dan fauna di Indonesia:</p>
+                        <div style="background-color: #000; border-radius: 8px; padding: 15px; text-align: center; margin-top: 10px;">
+                            <p><i class="fas fa-play-circle" style="font-size: 2rem; color: var(--secondary-color);"></i></p>
+                            <p>[Video Keanekaragaman Hayati Indonesia]</p>
+                            <p class="journal-prompt">Video ini akan menampilkan kekayaan flora dan fauna Indonesia serta ancaman yang dihadapinya.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analisis & Saran Content -->
+                <div id="analysis-content" class="content-section">
+                    <h2><i class="fas fa-chart-line"></i> Analisis & Saran Perbaikan</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-check-circle"></i> Kekuatan RPP Asli</h4>
+                        <p>RPP ini telah memiliki elemen <span class="badge badge-berkesadaran">Berkesadaran</span>, <span class="badge badge-bermakna">Bermakna</span>, dan <span class="badge badge-menggembirakan">Menggembirakan</span> yang baik dengan pendekatan Deep Learning.</p>
+                    </div>
+                    
+                    <h3>Saran Perbaikan Konkret</h3>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-brain"></i> Agar Lebih Berkesadaran</h4>
+                        <span class="badge badge-berkesadaran">Berkesadaran</span>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li><strong>Integrasi Isu Lokal:</strong> Sertakan data flora/fauna endemik dari daerah sekitar siswa</li>
+                            <li><strong>Refleksi Terstruktur:</strong> Gunakan template refleksi "Apa yang saya pelajari? Apa yang membuat saya khawatir? Apa yang bisa saya lakukan?"</li>
+                            <li><strong>Koneksi Emosional:</strong> Ajak siswa merasakan keterkaitan dengan alam melalui cerita atau pengalaman personal</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-heart"></i> Agar Lebih Bermakna</h4>
+                        <span class="badge badge-bermakna">Bermakna</span>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li><strong>Proyek Mini Kolaboratif:</strong> Buat kampanye digital tentang spesies terancam punah</li>
+                            <li><strong>Keterkaitan Kehidupan Sehari-hari:</strong> Diskusikan pengaruh konsumsi terhadap habitat flora/fauna</li>
+                            <li><strong>Peta Interaktif:</strong> Gunakan Google My Maps untuk menambahkan foto, ancaman, dan upaya konservasi</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-smile"></i> Agar Lebih Menggembirakan</h4>
+                        <span class="badge badge-menggembirakan">Menggembirakan</span>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li><strong>Simulasi/Role-Play:</strong> Siswa berperan sebagai ilmuwan atau aktivis dalam rapat penyelamatan spesies</li>
+                            <li><strong>Permainan Edukatif:</strong> Buat "escape room" digital tentang flora/fauna Indonesia</li>
+                            <li><strong>Field Trip Virtual:</strong> Gunakan virtual tour kebun raya atau taman nasional</li>
+                            <li><strong>Kreativitas Seni:</strong> Buat lagu atau cerita tentang perjalanan satwa menyeberangi garis Wallace-Weber</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="interactive-section">
+                        <h4><i class="fas fa-lightbulb"></i> Implementasi Saran dalam RPP Ini</h4>
+                        <p>RPP interaktif ini telah mengimplementasikan beberapa saran perbaikan:</p>
+                        
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="implementasi1">Peta Interaktif</button>
+                            <button class="tab-btn" data-tab="implementasi2">Refleksi Digital</button>
+                            <button class="tab-btn" data-tab="implementasi3">Kuis Interaktif</button>
+                        </div>
+                        
+                        <div id="implementasi1" class="tab-content active">
+                            <p>Peta Indonesia interaktif di bawah memungkinkan siswa mengeksplorasi persebaran flora dan fauna di tiga zona:</p>
+                            <div class="map-container">
+                                <div class="map-overlay"></div>
+                                <div class="zone-marker zone-western" data-zone="barat">B</div>
+                                <div class="zone-marker zone-central" data-zone="tengah">T</div>
+                                <div class="zone-marker zone-eastern" data-zone="timur">T</div>
+                                
+                                <div id="zone-info-barat" class="zone-info" style="top: 30%; left: 30%;">
+                                    <h5>Zona Barat (Oriental)</h5>
+                                    <p><strong>Flora:</strong> Raflesia Arnoldi, Cempaka hutan, Pohon jati</p>
+                                    <p><strong>Fauna:</strong> Orang Utan, Harimau Sumatera, Elang Jawa</p>
+                                </div>
+                                
+                                <div id="zone-info-tengah" class="zone-info" style="top: 60%; left: 50%;">
+                                    <h5>Zona Tengah (Peralihan)</h5>
+                                    <p><strong>Flora:</strong> Cengkeh, Pohon eboni, Anggrek hitam</p>
+                                    <p><strong>Fauna:</strong> Anoa, Babirusa, Komodo</p>
+                                </div>
+                                
+                                <div id="zone-info-timur" class="zone-info" style="top: 80%; left: 80%;">
+                                    <h5>Zona Timur (Australis)</h5>
+                                    <p><strong>Flora:</strong> Pohon sagu, Matoa, Pohon cendana</p>
+                                    <p><strong>Fauna:</strong> Walabi, Kasuari, Cendrawasih</p>
+                                </div>
+                            </div>
+                            <p class="journal-prompt">Klik pada tanda lingkaran di peta untuk melihat informasi detail setiap zona persebaran.</p>
+                        </div>
+                        
+                        <div id="implementasi2" class="tab-content">
+                            <p>Bagian refleksi digital memungkinkan siswa mengekspresikan perasaan dan komitmen setelah mempelajari materi:</p>
+                            <div class="reflection-journal">
+                                <p class="journal-prompt">Setelah mempelajari persebaran flora dan fauna di Indonesia, bagaimana perasaan Anda? Apa yang bisa Anda lakukan untuk berkontribusi dalam pelestariannya?</p>
+                                <textarea id="reflection-text" placeholder="Tuliskan refleksi Anda di sini..."></textarea>
+                                <button class="btn" id="save-reflection" style="margin-top: 10px;"><i class="fas fa-save"></i> Simpan Refleksi</button>
+                            </div>
+                        </div>
+                        
+                        <div id="implementasi3" class="tab-content">
+                            <p>Kuis interaktif membantu menguji pemahaman dengan cara yang lebih menyenangkan:</p>
+                            <div class="quiz-container">
+                                <div class="quiz-question" id="quiz-question">Flora mana yang termasuk dalam Zona Barat (Oriental)?</div>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" data-option="a">Raflesia Arnoldi</div>
+                                    <div class="quiz-option" data-option="b">Pohon sagu</div>
+                                    <div class="quiz-option" data-option="c">Pohon cendana</div>
+                                    <div class="quiz-option" data-option="d">Matoa</div>
+                                </div>
+                                <button class="btn" id="check-answer">Periksa Jawaban</button>
+                                <div class="quiz-result" id="quiz-result">
+                                    <h4><i class="fas fa-trophy"></i> Jawaban Benar!</h4>
+                                    <p>Raflesia Arnoldi memang termasuk flora Zona Barat (Oriental) yang banyak ditemukan di Sumatera.</p>
+                                    <button class="btn btn-secondary" id="next-question">Pertanyaan Berikutnya</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Materi Pembelajaran Content -->
+                <div id="material-content" class="content-section">
+                    <h2><i class="fas fa-seedling"></i> Materi Pembelajaran: Persebaran Flora dan Fauna</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-map-marked-alt"></i> Tiga Zona Persebaran di Indonesia</h4>
+                        <p>Berdasarkan garis Wallace dan Weber, Indonesia terbagi menjadi tiga zona persebaran flora dan fauna: <strong>Zona Barat (Oriental)</strong>, <strong>Zona Tengah (Peralihan)</strong>, dan <strong>Zona Timur (Australis)</strong>.</p>
+                    </div>
+                    
+                    <h3>Flora Indonesia Berdasarkan Zona</h3>
+                    
+                    <div class="flora-fauna-grid">
+                        <div class="species-card" data-zone="barat">
+                            <div class="species-icon"><i class="fas fa-spa"></i></div>
+                            <div class="species-name">Raflesia Arnoldi</div>
+                            <div class="species-zone">Zona Barat</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="barat">
+                            <div class="species-icon"><i class="fas fa-tree"></i></div>
+                            <div class="species-name">Pohon Jati</div>
+                            <div class="species-zone">Zona Barat</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="tengah">
+                            <div class="species-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="species-name">Cengkeh</div>
+                            <div class="species-zone">Zona Tengah</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="tengah">
+                            <div class="species-icon"><i class="fas fa-feather-alt"></i></div>
+                            <div class="species-name">Anggrek Hitam</div>
+                            <div class="species-zone">Zona Tengah</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="timur">
+                            <div class="species-icon"><i class="fas fa-pagelines"></i></div>
+                            <div class="species-name">Pohon Sagu</div>
+                            <div class="species-zone">Zona Timur</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="timur">
+                            <div class="species-icon"><i class="fas fa-tree"></i></div>
+                            <div class="species-name">Pohon Cendana</div>
+                            <div class="species-zone">Zona Timur</div>
+                        </div>
+                    </div>
+                    
+                    <h3>Fauna Indonesia Berdasarkan Zona</h3>
+                    
+                    <div class="flora-fauna-grid">
+                        <div class="species-card" data-zone="barat">
+                            <div class="species-icon"><i class="fas fa-otter"></i></div>
+                            <div class="species-name">Orang Utan</div>
+                            <div class="species-zone">Zona Barat</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="barat">
+                            <div class="species-icon"><i class="fas fa-cat"></i></div>
+                            <div class="species-name">Harimau Sumatera</div>
+                            <div class="species-zone">Zona Barat</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="tengah">
+                            <div class="species-icon"><i class="fas fa-dragon"></i></div>
+                            <div class="species-name">Komodo</div>
+                            <div class="species-zone">Zona Tengah</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="tengah">
+                            <div class="species-icon"><i class="fas fa-deer"></i></div>
+                            <div class="species-name">Anoa</div>
+                            <div class="species-zone">Zona Tengah</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="timur">
+                            <div class="species-icon"><i class="fas fa-kiwi-bird"></i></div>
+                            <div class="species-name">Cendrawasih</div>
+                            <div class="species-zone">Zona Timur</div>
+                        </div>
+                        
+                        <div class="species-card" data-zone="timur">
+                            <div class="species-icon"><i class="fas fa-crow"></i></div>
+                            <div class="species-name">Kasuari</div>
+                            <div class="species-zone">Zona Timur</div>
+                        </div>
+                    </div>
+                    
+                    <h3>Ancaman dan Pelestarian</h3>
+                    <div class="activity-card">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Ancaman terhadap Keanekaragaman Hayati</h4>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li><strong>Perubahan iklim</strong> yang mengganggu habitat alami</li>
+                            <li><strong>Perambahan hutan</strong> untuk perkebunan dan pemukiman</li>
+                            <li><strong>Perburuan liar</strong> untuk perdagangan satwa dilindungi</li>
+                            <li><strong>Polusi</strong> yang merusak ekosistem</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-hands-helping"></i> Upaya Pelestarian</h4>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Penetapan <strong>kawasan konservasi</strong> (taman nasional, cagar alam)</li>
+                            <li>Program <strong>penangkaran</strong> dan reintroduksi satwa langka</li>
+                            <li><strong>Edukasi</strong> masyarakat tentang pentingnya keanekaragaman hayati</li>
+                            <li><strong>Penegakan hukum</strong> terhadap perburuan dan perdagangan ilegal</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="interactive-section">
+                        <h4><i class="fas fa-hands"></i> Kontribusi yang Bisa Dilakukan Siswa</h4>
+                        <p>Sebagai generasi muda, kita bisa berkontribusi dalam pelestarian flora dan fauna Indonesia:</p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
+                            <div style="flex: 1; min-width: 200px; background-color: white; padding: 15px; border-radius: 8px;">
+                                <h5><i class="fas fa-recycle"></i> Reduce, Reuse, Recycle</h5>
+                                <p>Kurangi sampah plastik yang mencemari habitat satwa.</p>
+                            </div>
+                            
+                            <div style="flex: 1; min-width: 200px; background-color: white; padding: 15px; border-radius: 8px;">
+                                <h5><i class="fas fa-campground"></i> Wisata Bertanggung Jawab</h5>
+                                <p>Pilih wisata alam yang mendukung konservasi.</p>
+                            </div>
+                            
+                            <div style="flex: 1; min-width: 200px; background-color: white; padding: 15px; border-radius: 8px;">
+                                <h5><i class="fas fa-share-alt"></i> Edukasi Lingkungan</h5>
+                                <p>Bagikan pengetahuan tentang pentingnya pelestarian.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="reflection-journal" style="margin-top: 20px;">
+                            <p class="journal-prompt">Menurut Anda, upaya apa yang paling efektif untuk melestarikan flora dan fauna Indonesia? Mengapa?</p>
+                            <textarea id="conservation-ideas" placeholder="Tuliskan ide Anda di sini..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aktivitas Interaktif Content -->
+                <div id="activities-content" class="content-section">
+                    <h2><i class="fas fa-gamepad"></i> Aktivitas Interaktif</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-users"></i> Prinsip Pembelajaran dalam Aktivitas</h4>
+                        <p>Aktivitas ini dirancang untuk mengimplementasikan prinsip <span class="badge badge-berkesadaran">Berkesadaran</span>, <span class="badge badge-bermakna">Bermakna</span>, dan <span class="badge badge-menggembirakan">Menggembirakan</span> secara terintegrasi.</p>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-puzzle-piece"></i> 1. Klasifikasi Flora dan Fauna</h4>
+                        <p>Drag and drop flora dan fauna ke zona yang sesuai:</p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+                            <div style="flex: 1; min-width: 250px; background-color: #FFEBEE; padding: 15px; border-radius: 8px;">
+                                <h5>Zona Barat (Oriental)</h5>
+                                <div class="drop-zone" data-zone="barat" style="min-height: 150px; border: 2px dashed #E53935; border-radius: 5px; padding: 10px; margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div style="flex: 1; min-width: 250px; background-color: #FFF3E0; padding: 15px; border-radius: 8px;">
+                                <h5>Zona Tengah (Peralihan)</h5>
+                                <div class="drop-zone" data-zone="tengah" style="min-height: 150px; border: 2px dashed #FB8C00; border-radius: 5px; padding: 10px; margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div style="flex: 1; min-width: 250px; background-color: #E8F5E9; padding: 15px; border-radius: 8px;">
+                                <h5>Zona Timur (Australis)</h5>
+                                <div class="drop-zone" data-zone="timur" style="min-height: 150px; border: 2px dashed #43A047; border-radius: 5px; padding: 10px; margin-top: 10px;"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                            <div class="draggable-item" data-item="orangutan" data-type="fauna" data-zone="barat" style="padding: 10px 15px; background-color: white; border-radius: 5px; cursor: move; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">Orang Utan</div>
+                            <div class="draggable-item" data-item="komodo" data-type="fauna" data-zone="tengah" style="padding: 10px 15px; background-color: white; border-radius: 5px; cursor: move; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">Komodo</div>
+                            <div class="draggable-item" data-item="cendrawasih" data-type="fauna" data-zone="timur" style="padding: 10px 15px; background-color: white; border-radius: 5px; cursor: move; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">Cendrawasih</div>
+                            <div class="draggable-item" data-item="raflesia" data-type="flora" data-zone="barat" style="padding: 10px 15px; background-color: white; border-radius: 5px; cursor: move; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">Raflesia Arnoldi</div>
+                            <div class="draggable-item" data-item="cendana" data-type="flora" data-zone="timur" style="padding: 10px 15px; background-color: white; border-radius: 5px; cursor: move; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">Pohon Cendana</div>
+                            <div class="draggable-item" data-item="anggrek" data-type="flora" data-zone="tengah" style="padding: 10px 15px; background-color: white; border-radius: 5px; cursor: move; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">Anggrek Hitam</div>
+                        </div>
+                        
+                        <button class="btn" id="check-classification" style="margin-top: 20px;"><i class="fas fa-check"></i> Periksa Klasifikasi</button>
+                        <div id="classification-feedback" style="display: none; margin-top: 15px; padding: 15px; background-color: #D4EDDA; border-radius: 8px;"></div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-campaignground"></i> 2. Rencana Kampanye Pelestarian</h4>
+                        <p>Buat rencana kampanye untuk melestarikan satu spesies terancam punah:</p>
+                        
+                        <div style="margin: 20px 0;">
+                            <label for="species-select">Pilih spesies:</label>
+                            <select id="species-select" style="padding: 10px; border-radius: 5px; border: 1px solid #ced4da; width: 100%; margin-top: 5px;">
+                                <option value="">-- Pilih Spesies --</option>
+                                <option value="harimau">Harimau Sumatera</option>
+                                <option value="orangutan">Orang Utan</option>
+                                <option value="komodo">Komodo</option>
+                                <option value="cendrawasih">Cendrawasih</option>
+                                <option value="raflesia">Raflesia Arnoldi</option>
+                                <option value="elang">Elang Jawa</option>
+                            </select>
+                            
+                            <div style="margin-top: 15px;">
+                                <label for="campaign-name">Nama Kampanye:</label>
+                                <input type="text" id="campaign-name" placeholder="Contoh: Selamatkan Harimau Sumatera" style="padding: 10px; border-radius: 5px; border: 1px solid #ced4da; width: 100%; margin-top: 5px;">
+                            </div>
+                            
+                            <div style="margin-top: 15px;">
+                                <label for="campaign-strategy">Strategi Kampanye:</label>
+                                <textarea id="campaign-strategy" placeholder="Jelaskan strategi kampanye Anda..." style="padding: 10px; border-radius: 5px; border: 1px solid #ced4da; width: 100%; margin-top: 5px; min-height: 100px;"></textarea>
+                            </div>
+                            
+                            <button class="btn" id="generate-campaign" style="margin-top: 15px;"><i class="fas fa-bullhorn"></i> Buat Rencana Kampanye</button>
+                        </div>
+                        
+                        <div id="campaign-output" style="display: none; margin-top: 20px; padding: 20px; background-color: #E3F2FD; border-radius: 8px;"></div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-music"></i> 3. Lagu Pelestarian Flora & Fauna</h4>
+                        <p>Buat lirik lagu pendek tentang pentingnya melestarikan flora dan fauna Indonesia:</p>
+                        
+                        <div style="margin: 20px 0;">
+                            <textarea id="song-lyrics" placeholder="Tulis lirik lagu Anda di sini... (minimal 4 baris)" style="padding: 15px; border-radius: 8px; border: 1px solid #ced4da; width: 100%; min-height: 150px;"></textarea>
+                            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                                <button class="btn" id="save-song"><i class="fas fa-save"></i> Simpan Lagu</button>
+                                <button class="btn btn-secondary" id="generate-rhyme"><i class="fas fa-magic"></i> Butuh Inspirasi?</button>
+                            </div>
+                        </div>
+                        
+                        <div id="song-output" style="display: none; margin-top: 20px; padding: 20px; background-color: #F3E5F5; border-radius: 8px;"></div>
+                    </div>
+                </div>
+                
+                <!-- Asesmen Content -->
+                <div id="assessment-content" class="content-section">
+                    <h2><i class="fas fa-clipboard-check"></i> Asesmen Pembelajaran</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chart-pie"></i> Pendekatan Asesmen Holistik</h4>
+                        <p>Asesmen dalam pembelajaran ini mencakup tiga tahap: <strong>asesmen awal</strong>, <strong>asesmen proses</strong>, dan <strong>asesmen akhir</strong> dengan berbagai teknik penilaian.</p>
+                    </div>
+                    
+                    <h3>Rubrik Penilaian Diskusi</h3>
+                    
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                            <thead>
+                                <tr style="background-color: var(--primary-color); color: white;">
+                                    <th style="padding: 12px; text-align: left;">Aspek yang Dinilai</th>
+                                    <th style="padding: 12px; text-align: center;">Skor 4</th>
+                                    <th style="padding: 12px; text-align: center;">Skor 3</th>
+                                    <th style="padding: 12px; text-align: center;">Skor 2</th>
+                                    <th style="padding: 12px; text-align: center;">Skor 1</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #dee2e6;">
+                                    <td style="padding: 12px;"><strong>Partisipasi & Keaktifan</strong></td>
+                                    <td style="padding: 12px; text-align: center;">Sangat aktif, menyumbang ide lebih dari sekali</td>
+                                    <td style="padding: 12px; text-align: center;">Aktif, menyumbang ide minimal 1 kali</td>
+                                    <td style="padding: 12px; text-align: center;">Kurang aktif, jarang menyumbang ide</td>
+                                    <td style="padding: 12px; text-align: center;">Pasif, tidak menyumbang ide</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #dee2e6;">
+                                    <td style="padding: 12px;"><strong>Pemahaman Konsep</strong></td>
+                                    <td style="padding: 12px; text-align: center;">Argumentasi dengan konsep tepat, contoh nyata</td>
+                                    <td style="padding: 12px; text-align: center;">Konsep benar, contoh terbatas</td>
+                                    <td style="padding: 12px; text-align: center;">Konsep kurang tepat, contoh kurang relevan</td>
+                                    <td style="padding: 12px; text-align: center;">Tidak menunjukkan pemahaman</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #dee2e6;">
+                                    <td style="padding: 12px;"><strong>Kerja Sama</strong></td>
+                                    <td style="padding: 12px; text-align: center;">Selalu menghargai dan mendorong teman</td>
+                                    <td style="padding: 12px; text-align: center;">Menghargai teman, kadang memberi ruang</td>
+                                    <td style="padding: 12px; text-align: center;">Kurang menghargai, cenderung mendominasi</td>
+                                    <td style="padding: 12px; text-align: center;">Tidak bekerja sama</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #dee2e6;">
+                                    <td style="padding: 12px;"><strong>Berpikir Kritis & Analitis</strong></td>
+                                    <td style="padding: 12px; text-align: center;">Analisis mendalam dengan solusi</td>
+                                    <td style="padding: 12px; text-align: center;">Analisis cukup baik, contoh relevan</td>
+                                    <td style="padding: 12px; text-align: center;">Analisis dangkal, contoh kurang sesuai</td>
+                                    <td style="padding: 12px; text-align: center;">Tidak analitis</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h3>Kuis Interaktif</h3>
+                    
+                    <div class="quiz-container">
+                        <div class="quiz-question" id="full-quiz-question">1. Garis Weber membatasi persebaran fauna antara zona...</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-quiz="1" data-option="a">Barat dan Tengah</div>
+                            <div class="quiz-option" data-quiz="1" data-option="b">Tengah dan Timur</div>
+                            <div class="quiz-option" data-quiz="1" data-option="c">Barat dan Timur</div>
+                            <div class="quiz-option" data-quiz="1" data-option="d">Utara dan Selatan</div>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <div class="quiz-question">2. Manakah dari berikut ini yang BUKAN ancaman utama bagi flora dan fauna Indonesia?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-quiz="2" data-option="a">Perubahan iklim</div>
+                                <div class="quiz-option" data-quiz="2" data-option="b">Perambahan hutan</div>
+                                <div class="quiz-option" data-quiz="2" data-option="c">Penangkaran satwa</div>
+                                <div class="quiz-option" data-quiz="2" data-option="d">Perburuan liar</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <div class="quiz-question">3. Flora manakah yang termasuk dalam Zona Timur (Australis)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-quiz="3" data-option="a">Raflesia Arnoldi</div>
+                                <div class="quiz-option" data-quiz="3" data-option="b">Pohon Jati</div>
+                                <div class="quiz-option" data-quiz="3" data-option="c">Pohon Sagu</div>
+                                <div class="quiz-option" data-quiz="3" data-option="d">Anggrek Hitam</div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn" id="submit-quiz" style="margin-top: 20px;"><i class="fas fa-paper-plane"></i> Kirim Jawaban</button>
+                        
+                        <div class="quiz-result" id="quiz-score" style="text-align: left;">
+                            <h4><i class="fas fa-chart-bar"></i> Hasil Kuis</h4>
+                            <p>Jawaban Benar: <span id="correct-answers">0</span>/3</p>
+                            <p>Nilai: <span id="quiz-grade">0</span></p>
+                            <p id="quiz-feedback"></p>
+                            <button class="btn btn-secondary" id="retry-quiz"><i class="fas fa-redo"></i> Coba Lagi</button>
+                        </div>
+                    </div>
+                    
+                    <h3>Penilaian Diri (Self-Assessment)</h3>
+                    
+                    <div class="reflection-journal">
+                        <p>Setelah mengikuti pembelajaran ini, bagaimana penilaian Anda terhadap pemahaman Anda?</p>
+                        
+                        <div style="margin: 15px 0;">
+                            <label for="understanding-level">Pemahaman tentang persebaran flora dan fauna di Indonesia:</label>
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                                <span>Sangat Kurang</span>
+                                <span>Sangat Baik</span>
+                            </div>
+                            <input type="range" id="understanding-level" min="1" max="5" value="3" style="width: 100%; margin: 10px 0;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin: 15px 0;">
+                            <label for="contribution-idea">Ide kontribusi untuk pelestarian flora dan fauna:</label>
+                            <textarea id="contribution-idea" placeholder="Tuliskan ide Anda..." style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ced4da; margin-top: 5px; min-height: 80px;"></textarea>
+                        </div>
+                        
+                        <button class="btn" id="submit-self-assessment"><i class="fas fa-user-check"></i> Kirim Penilaian Diri</button>
+                    </div>
+                </div>
+                
+                <!-- Sumber & Lampiran Content -->
+                <div id="resources-content" class="content-section">
+                    <h2><i class="fas fa-download"></i> Sumber & Lampiran</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-link"></i> Tautan Penting</h4>
+                        <p>Berikut adalah sumber daya yang digunakan dalam pembelajaran ini:</p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li><a href="https://www.mentimeter.com" target="_blank">Mentimeter</a> - untuk asesmen awal</li>
+                            <li><a href="https://quizizz.com" target="_blank">Quizizz</a> - untuk kuis interaktif</li>
+                            <li><a href="https://www.canva.com" target="_blank">Canva</a> - untuk media pembelajaran</li>
+                            <li><a href="https://www.google.com/mymaps" target="_blank">Google My Maps</a> - untuk peta digital</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Lembar Kerja Siswa (Contoh)</h3>
+                    
+                    <div class="activity-card">
+                        <h4><i class="fas fa-file-alt"></i> Lembar Kerja: Menjelajah Alam Nusantara</h4>
+                        <p><strong>Instruksi:</strong> Selesaikan persoalan-persoalan di bawah ini dengan tepat!</p>
+                        
+                        <div style="margin: 20px 0;">
+                            <p><strong>1. Kelompokkan flora Indonesia berikut sesuai persebarannya:</strong></p>
+                            <p>Raflesia Arnoldi, Cempaka hutan, Cengkeh, Pohon sagu, Pohon eboni, Matoa, Pohon cendana, Anggrek hitam, Pohon jati</p>
+                            
+                            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 15px;">
+                                <div style="flex: 1; min-width: 200px; padding: 15px; background-color: #FFEBEE; border-radius: 8px;">
+                                    <h5>Zona Barat (Oriental)</h5>
+                                    <p>a. ________________</p>
+                                    <p>b. ________________</p>
+                                    <p>c. ________________</p>
+                                </div>
+                                
+                                <div style="flex: 1; min-width: 200px; padding: 15px; background-color: #FFF3E0; border-radius: 8px;">
+                                    <h5>Zona Tengah (Peralihan)</h5>
+                                    <p>a. ________________</p>
+                                    <p>b. ________________</p>
+                                    <p>c. ________________</p>
+                                </div>
+                                
+                                <div style="flex: 1; min-width: 200px; padding: 15px; background-color: #E8F5E9; border-radius: 8px;">
+                                    <h5>Zona Timur (Australis)</h5>
+                                    <p>a. ________________</p>
+                                    <p>b. ________________</p>
+                                    <p>c. ________________</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin: 20px 0;">
+                            <p><strong>2. Analisis Artikel Ancaman Kepunahan:</strong></p>
+                            <p>Berdasarkan artikel dari Centrea tentang flora dan fauna terancam punah:</p>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li>Apa ancaman utama yang disebutkan?</li>
+                                <li>Apa dampak dari ancaman tersebut?</li>
+                                <li>Apa yang bisa kita lakukan untuk menyelamatkan warisan alam ini?</li>
+                            </ul>
+                            <textarea placeholder="Tulis analisis Anda di sini..." style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ced4da; margin-top: 10px; min-height: 150px;"></textarea>
+                        </div>
+                        
+                        <button class="btn" id="download-worksheet"><i class="fas fa-download"></i> Unduh Lembar Kerja Lengkap</button>
+                    </div>
+                    
+                    <h3>Referensi dan Bacaan Lanjutan</h3>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+                        <div style="flex: 1; min-width: 200px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                            <h5><i class="fas fa-book"></i> Buku Teks</h5>
+                            <p>Biologi untuk SMA Kelas X, Kementerian Pendidikan dan Kebudayaan</p>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                            <h5><i class="fas fa-globe"></i> Situs Web</h5>
+                            <p>IUCN Red List: Daftar spesies terancam punah</p>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                            <h5><i class="fas fa-video"></i> Video Dokumenter</h5>
+                            <p>"Indonesia: The Emerald of the Equator" - dokumenter keanekaragaman hayati</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box success">
+                        <h4><i class="fas fa-graduation-cap"></i> Sertifikat Penyelesaian</h4>
+                        <p>Setelah menyelesaikan semua aktivitas dan asesmen dalam modul ini, Anda dapat mengunduh sertifikat penyelesaian.</p>
+                        <button class="btn" id="generate-certificate" style="margin-top: 10px;"><i class="fas fa-award"></i> Dapatkan Sertifikat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>RPP Interaktif "Menjelajah Alam Nusantara: Persebaran Flora dan Fauna di Indonesia"</p>
+            <p>Disusun oleh: Nurul Qomariyah, S.Pd. | SMA Negeri 2 Playen | © 2025</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Modul ini mengintegrasikan prinsip <strong>Berkesadaran, Bermakna, dan Menggembirakan</strong> dalam pembelajaran Biologi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // DOM Elements
+        const principleCards = document.querySelectorAll('.principle-card');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const contentSections = document.querySelectorAll('.content-section');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const zoneMarkers = document.querySelectorAll('.zone-marker');
+        const zoneInfos = document.querySelectorAll('.zone-info');
+        const speciesCards = document.querySelectorAll('.species-card');
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+        const markCompleteBtn = document.getElementById('mark-complete');
+        const saveReflectionBtn = document.getElementById('save-reflection');
+        const reflectionText = document.getElementById('reflection-text');
+        const checkAnswerBtn = document.getElementById('check-answer');
+        const nextQuestionBtn = document.getElementById('next-question');
+        const quizResult = document.getElementById('quiz-result');
+        const draggableItems = document.querySelectorAll('.draggable-item');
+        const dropZones = document.querySelectorAll('.drop-zone');
+        const checkClassificationBtn = document.getElementById('check-classification');
+        const classificationFeedback = document.getElementById('classification-feedback');
+        const generateCampaignBtn = document.getElementById('generate-campaign');
+        const campaignOutput = document.getElementById('campaign-output');
+        const saveSongBtn = document.getElementById('save-song');
+        const generateRhymeBtn = document.getElementById('generate-rhyme');
+        const songOutput = document.getElementById('song-output');
+        const submitQuizBtn = document.getElementById('submit-quiz');
+        const quizScore = document.getElementById('quiz-score');
+        const retryQuizBtn = document.getElementById('retry-quiz');
+        const submitSelfAssessmentBtn = document.getElementById('submit-self-assessment');
+        const downloadWorksheetBtn = document.getElementById('download-worksheet');
+        const generateCertificateBtn = document.getElementById('generate-certificate');
+        
+        // Progress tracking
+        let completedSections = new Set(['rpp-content']);
+        let progress = 0;
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            
+            // Principle cards interaction
+            principleCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    principleCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content based on principle
+                    const principle = this.id.replace('-card', '');
+                    highlightPrincipleContent(principle);
+                });
+            });
+            
+            // Menu navigation
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    contentSections.forEach(section => section.classList.remove('active'));
+                    document.getElementById(target).classList.add('active');
+                    
+                    // Track progress when visiting new sections
+                    if (!completedSections.has(target)) {
+                        completedSections.add(target);
+                        updateProgress();
+                    }
+                });
+            });
+            
+            // Tab switching
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Zone markers interaction
+            zoneMarkers.forEach(marker => {
+                marker.addEventListener('click', function() {
+                    const zone = this.getAttribute('data-zone');
+                    
+                    // Hide all zone info
+                    zoneInfos.forEach(info => info.style.display = 'none');
+                    
+                    // Show corresponding zone info
+                    document.getElementById(`zone-info-${zone}`).style.display = 'block';
+                });
+            });
+            
+            // Close zone info when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.zone-marker') && !e.target.closest('.zone-info')) {
+                    zoneInfos.forEach(info => info.style.display = 'none');
+                }
+            });
+            
+            // Species cards interaction
+            speciesCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const zone = this.getAttribute('data-zone');
+                    const zoneNames = {
+                        'barat': 'Zona Barat (Oriental)',
+                        'tengah': 'Zona Tengah (Peralihan)',
+                        'timur': 'Zona Timur (Australis)'
+                    };
+                    
+                    alert(`Spesies ini termasuk dalam ${zoneNames[zone]}. Klik peta interaktif untuk informasi lebih detail.`);
+                });
+            });
+            
+            // Quiz interaction
+            let selectedOption = null;
+            let currentQuestion = 1;
+            const quizQuestions = [
+                {
+                    question: "Flora mana yang termasuk dalam Zona Barat (Oriental)?",
+                    options: ["Raflesia Arnoldi", "Pohon sagu", "Pohon cendana", "Matoa"],
+                    correct: "a"
+                },
+                {
+                    question: "Garis Wallace membatasi persebaran fauna antara zona...",
+                    options: ["Barat dan Tengah", "Tengah dan Timur", "Barat dan Timur", "Utara dan Selatan"],
+                    correct: "a"
+                },
+                {
+                    question: "Fauna endemik mana yang hanya ditemukan di Pulau Komodo?",
+                    options: ["Orang Utan", "Anoa", "Komodo", "Walabi"],
+                    correct: "c"
+                }
+            ];
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    quizOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    selectedOption = this.getAttribute('data-option');
+                });
+            });
+            
+            checkAnswerBtn.addEventListener('click', function() {
+                if (!selectedOption) {
+                    alert("Pilih salah satu jawaban terlebih dahulu!");
+                    return;
+                }
+                
+                const correctAnswer = quizQuestions[currentQuestion-1].correct;
+                
+                if (selectedOption === correctAnswer) {
+                    quizResult.innerHTML = `
+                        <h4><i class="fas fa-trophy"></i> Jawaban Benar!</h4>
+                        <p>${quizQuestions[currentQuestion-1].options[correctAnswer.charCodeAt(0)-97]} memang jawaban yang tepat.</p>
+                    `;
+                } else {
+                    const correctText = quizQuestions[currentQuestion-1].options[correctAnswer.charCodeAt(0)-97];
+                    quizResult.innerHTML = `
+                        <h4><i class="fas fa-lightbulb"></i> Jawaban Salah</h4>
+                        <p>Jawaban yang benar adalah: ${correctText}</p>
+                    `;
+                }
+                
+                quizResult.style.display = 'block';
+            });
+            
+            nextQuestionBtn.addEventListener('click', function() {
+                if (currentQuestion < quizQuestions.length) {
+                    currentQuestion++;
+                    document.getElementById('quiz-question').textContent = quizQuestions[currentQuestion-1].question;
+                    
+                    // Update options
+                    const optionElements = document.querySelectorAll('.quiz-option');
+                    optionElements.forEach((opt, index) => {
+                        opt.textContent = quizQuestions[currentQuestion-1].options[index];
+                        opt.setAttribute('data-option', String.fromCharCode(97 + index));
+                    });
+                    
+                    // Reset selection
+                    quizOptions.forEach(opt => opt.classList.remove('selected'));
+                    selectedOption = null;
+                    quizResult.style.display = 'none';
+                } else {
+                    alert("Anda telah menyelesaikan semua pertanyaan!");
+                }
+            });
+            
+            // Mark complete button
+            markCompleteBtn.addEventListener('click', function() {
+                progress = 100;
+                updateProgress();
+                this.innerHTML = '<i class="fas fa-check-circle"></i> Selesai!';
+                this.disabled = true;
+                this.style.backgroundColor = '#6c757d';
+                
+                alert("Selamat! Anda telah menyelesaikan modul pembelajaran ini.");
+            });
+            
+            // Save reflection
+            saveReflectionBtn.addEventListener('click', function() {
+                if (reflectionText.value.trim() === '') {
+                    alert("Tuliskan refleksi Anda terlebih dahulu!");
+                    return;
+                }
+                
+                localStorage.setItem('reflection_journal', reflectionText.value);
+                alert("Refleksi Anda telah disimpan!");
+                this.innerHTML = '<i class="fas fa-check"></i> Tersimpan';
+                this.disabled = true;
+                this.style.backgroundColor = '#6c757d';
+            });
+            
+            // Load saved reflection if exists
+            const savedReflection = localStorage.getItem('reflection_journal');
+            if (savedReflection) {
+                reflectionText.value = savedReflection;
+                saveReflectionBtn.innerHTML = '<i class="fas fa-check"></i> Tersimpan';
+                saveReflectionBtn.disabled = true;
+                saveReflectionBtn.style.backgroundColor = '#6c757d';
+            }
+            
+            // Drag and drop functionality
+            let draggedItem = null;
+            
+            draggableItems.forEach(item => {
+                item.setAttribute('draggable', 'true');
+                
+                item.addEventListener('dragstart', function() {
+                    draggedItem = this;
+                    setTimeout(() => this.style.display = 'none', 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    setTimeout(() => this.style.display = 'block', 0);
+                    draggedItem = null;
+                });
+            });
+            
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = 'rgba(0,0,0,0.05)';
+                });
+                
+                zone.addEventListener('dragleave', function() {
+                    this.style.backgroundColor = '';
+                });
+                
+                zone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '';
+                    
+                    if (draggedItem) {
+                        const clone = draggedItem.cloneNode(true);
+                        clone.style.display = 'block';
+                        clone.style.margin = '5px';
+                        clone.style.cursor = 'default';
+                        clone.draggable = false;
+                        
+                        // Remove existing item with same data
+                        const existingItems = this.querySelectorAll(`[data-item="${draggedItem.getAttribute('data-item')}"]`);
+                        existingItems.forEach(item => item.remove());
+                        
+                        this.appendChild(clone);
+                    }
+                });
+            });
+            
+            // Check classification
+            checkClassificationBtn.addEventListener('click', function() {
+                let correct = 0;
+                let total = 0;
+                
+                dropZones.forEach(zone => {
+                    const zoneType = zone.getAttribute('data-zone');
+                    const items = zone.querySelectorAll('.draggable-item');
+                    
+                    items.forEach(item => {
+                        total++;
+                        if (item.getAttribute('data-zone') === zoneType) {
+                            correct++;
+                            item.style.backgroundColor = '#C8E6C9';
+                        } else {
+                            item.style.backgroundColor = '#FFCDD2';
+                        }
+                    });
+                });
+                
+                const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+                
+                classificationFeedback.innerHTML = `
+                    <h4><i class="fas fa-chart-bar"></i> Hasil Klasifikasi</h4>
+                    <p>Jawaban benar: ${correct} dari ${total}</p>
+                    <p>Skor: ${score}/100</p>
+                    <p>${score >= 80 ? 'Luar biasa! Anda memahami persebaran flora dan fauna dengan baik.' : 
+                        score >= 60 ? 'Cukup baik, tapi masih perlu belajar lebih lanjut.' : 
+                        'Perlu belajar lagi tentang persebaran flora dan fauna di Indonesia.'}</p>
+                `;
+                classificationFeedback.style.display = 'block';
+            });
+            
+            // Generate campaign
+            generateCampaignBtn.addEventListener('click', function() {
+                const speciesSelect = document.getElementById('species-select');
+                const campaignName = document.getElementById('campaign-name');
+                const campaignStrategy = document.getElementById('campaign-strategy');
+                
+                if (!speciesSelect.value || !campaignName.value.trim() || !campaignStrategy.value.trim()) {
+                    alert("Harap lengkapi semua field!");
+                    return;
+                }
+                
+                const speciesNames = {
+                    'harimau': 'Harimau Sumatera',
+                    'orangutan': 'Orang Utan',
+                    'komodo': 'Komodo',
+                    'cendrawasih': 'Cendrawasih',
+                    'raflesia': 'Raflesia Arnoldi',
+                    'elang': 'Elang Jawa'
+                };
+                
+                campaignOutput.innerHTML = `
+                    <h4><i class="fas fa-bullhorn"></i> Rencana Kampanye Pelestarian</h4>
+                    <p><strong>Spesies Target:</strong> ${speciesNames[speciesSelect.value]}</p>
+                    <p><strong>Nama Kampanye:</strong> ${campaignName.value}</p>
+                    <p><strong>Strategi Utama:</strong></p>
+                    <p>${campaignStrategy.value}</p>
+                    <p><strong>Langkah-langkah:</strong></p>
+                    <ol>
+                        <li>Edukasi masyarakat tentang pentingnya melestarikan ${speciesNames[speciesSelect.value]}</li>
+                        <li>Galang dukungan melalui media sosial</li>
+                        <li>Kolaborasi dengan lembaga konservasi setempat</li>
+                        <li>Monitor perkembangan populasi ${speciesNames[speciesSelect.value]}</li>
+                    </ol>
+                    <p style="margin-top: 15px; font-style: italic;">Kampanye ini berkontribusi pada tujuan pelestarian keanekaragaman hayati Indonesia.</p>
+                `;
+                campaignOutput.style.display = 'block';
+            });
+            
+            // Generate song rhyme
+            generateRhymeBtn.addEventListener('click', function() {
+                const rhymes = [
+                    "Indonesia tanah yang subur\nHutan hijau penuh warna\nFlora fauna hidup makmur\nJaga mereka sampai nanti",
+                    "Burung Cendrawasih terbang tinggi\nHarimau Sumatera mengaum kuat\nKita harus selalu sayangi\nAgar tak punah di kemudian hari",
+                    "Raflesia mekar indah\nKomodo berjalan perkasa\nAlam Nusantara sangatlah berharga\nMari kita jaga bersama-sama"
+                ];
+                
+                const randomRhyme = rhymes[Math.floor(Math.random() * rhymes.length)];
+                document.getElementById('song-lyrics').value = randomRhyme;
+            });
+            
+            // Save song
+            saveSongBtn.addEventListener('click', function() {
+                const lyrics = document.getElementById('song-lyrics').value;
+                
+                if (lyrics.trim() === '') {
+                    alert("Tulis lirik lagu terlebih dahulu!");
+                    return;
+                }
+                
+                songOutput.innerHTML = `
+                    <h4><i class="fas fa-music"></i> Lagu Pelestarian Anda</h4>
+                    <div style="white-space: pre-line; background-color: white; padding: 15px; border-radius: 5px; margin: 10px 0;">${lyrics}</div>
+                    <p><i class="fas fa-info-circle"></i> Lagu ini dapat digunakan sebagai bahan kampanye pelestarian flora dan fauna.</p>
+                `;
+                songOutput.style.display = 'block';
+                
+                localStorage.setItem('conservation_song', lyrics);
+            });
+            
+            // Load saved song if exists
+            const savedSong = localStorage.getItem('conservation_song');
+            if (savedSong) {
+                document.getElementById('song-lyrics').value = savedSong;
+            }
+            
+            // Full quiz submission
+            submitQuizBtn.addEventListener('click', function() {
+                const answers = {
+                    1: 'b', // Tengah dan Timur
+                    2: 'c', // Penangkaran satwa
+                    3: 'c'  // Pohon Sagu
+                };
+                
+                let correct = 0;
+                const selectedOptions = document.querySelectorAll('.quiz-option.selected');
+                
+                selectedOptions.forEach(option => {
+                    const quizNum = option.getAttribute('data-quiz');
+                    const selectedAnswer = option.getAttribute('data-option');
+                    
+                    if (answers[quizNum] === selectedAnswer) {
+                        correct++;
+                        option.style.backgroundColor = '#C8E6C9';
+                    } else {
+                        option.style.backgroundColor = '#FFCDD2';
+                    }
+                });
+                
+                const totalQuestions = Object.keys(answers).length;
+                const score = Math.round((correct / totalQuestions) * 100);
+                
+                document.getElementById('correct-answers').textContent = correct;
+                document.getElementById('quiz-grade').textContent = score;
+                
+                let feedback = '';
+                if (score >= 85) {
+                    feedback = 'Luar biasa! Anda menguasai materi persebaran flora dan fauna di Indonesia.';
+                } else if (score >= 70) {
+                    feedback = 'Bagus! Pemahaman Anda sudah baik, tetapi masih bisa ditingkatkan.';
+                } else if (score >= 50) {
+                    feedback = 'Cukup. Disarankan untuk mempelajari kembali materi tentang zona persebaran flora dan fauna.';
+                } else {
+                    feedback = 'Perlu belajar lebih giat lagi. Pelajari kembali materi tentang garis Wallace-Weber dan persebaran flora/fauna.';
+                }
+                
+                document.getElementById('quiz-feedback').textContent = feedback;
+                quizScore.style.display = 'block';
+            });
+            
+            // Retry quiz
+            retryQuizBtn.addEventListener('click', function() {
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.classList.remove('selected');
+                    option.style.backgroundColor = '';
+                });
+                quizScore.style.display = 'none';
+            });
+            
+            // Submit self-assessment
+            submitSelfAssessmentBtn.addEventListener('click', function() {
+                const understandingLevel = document.getElementById('understanding-level').value;
+                const contributionIdea = document.getElementById('contribution-idea').value;
+                
+                if (!contributionIdea.trim()) {
+                    alert("Harap tuliskan ide kontribusi Anda!");
+                    return;
+                }
+                
+                localStorage.setItem('self_assessment', JSON.stringify({
+                    understanding: understandingLevel,
+                    contribution: contributionIdea,
+                    date: new Date().toLocaleDateString()
+                }));
+                
+                alert("Penilaian diri telah disimpan. Terima kasih atas refleksi Anda!");
+                this.innerHTML = '<i class="fas fa-check"></i> Terkirim';
+                this.disabled = true;
+                this.style.backgroundColor = '#6c757d';
+            });
+            
+            // Download worksheet
+            downloadWorksheetBtn.addEventListener('click', function() {
+                alert("Lembar kerja sedang diunduh... (simulasi)");
+                // In a real implementation, this would generate and download a PDF
+            });
+            
+            // Generate certificate
+            generateCertificateBtn.addEventListener('click', function() {
+                if (progress < 100) {
+                    alert("Anda harus menyelesaikan seluruh modul terlebih dahulu!");
+                    return;
+                }
+                
+                alert("Sertifikat penyelesaian sedang dibuat... (simulasi)");
+                // In a real implementation, this would generate a certificate PDF
+            });
+        });
+        
+        // Update progress function
+        function updateProgress() {
+            const totalSections = 6; // rpp, analysis, material, activities, assessment, resources
+            progress = Math.round((completedSections.size / totalSections) * 100);
+            
+            progressBar.style.width = `${progress}%`;
+            progressPercent.textContent = `${progress}%`;
+        }
+        
+        // Highlight content based on principle
+        function highlightPrincipleContent(principle) {
+            // Remove previous highlights
+            document.querySelectorAll('.badge').forEach(badge => {
+                badge.style.transform = 'scale(1)';
+                badge.style.boxShadow = 'none';
+            });
+            
+            // Highlight badges corresponding to the principle
+            const principleBadges = document.querySelectorAll(`.badge-${principle}`);
+            principleBadges.forEach(badge => {
+                badge.style.transform = 'scale(1.1)';
+                badge.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                badge.style.transition = 'transform 0.3s, box-shadow 0.3s';
+            });
+            
+            // Show message about the principle
+            const messages = {
+                'berkesadaran': 'Prinsip Berkesadaran: Membangun kesadaran akan isu lingkungan dan tanggung jawab sebagai warga negara.',
+                'bermakna': 'Prinsip Bermakna: Menghubungkan pembelajaran dengan konteks nyata dan kehidupan sehari-hari.',
+                'menggembirakan': 'Prinsip Menggembirakan: Menciptakan pengalaman belajar yang menyenangkan dan memotivasi.'
+            };
+            
+            // Create or update message display
+            let messageDiv = document.getElementById('principle-message');
+            if (!messageDiv) {
+                messageDiv = document.createElement('div');
+                messageDiv.id = 'principle-message';
+                messageDiv.style.cssText = 'position: fixed; top: 20px; right: 20px; background-color: white; padding: 15px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); z-index: 1000; max-width: 300px;';
+                document.body.appendChild(messageDiv);
+            }
+            
+            messageDiv.innerHTML = `
+                <h4 style="margin-bottom: 10px; color: var(--primary-color);"><i class="fas fa-lightbulb"></i> ${principle.charAt(0).toUpperCase() + principle.slice(1)}</h4>
+                <p>${messages[principle]}</p>
+                <button onclick="this.parentElement.remove()" style="margin-top: 10px; padding: 5px 10px; background-color: #f8f9fa; border: none; border-radius: 3px; cursor: pointer;">Tutup</button>
+            `;
+            
+            // Auto-remove message after 5 seconds
+            setTimeout(() => {
+                if (messageDiv.parentElement) {
+                    messageDiv.remove();
+                }
+            }, 5000);
+        }
+        
+        // Simulate external resource loading
+        function simulateResourceLoad() {
+            console.log("Modul pembelajaran 'Menjelajah Alam Nusantara' telah dimuat sepenuhnya.");
+            console.log("Prinsip Berkesadaran, Bermakna, dan Menggembirakan telah terintegrasi dalam desain interaktif ini.");
+        }
+        
+        // Call simulation on load
+        window.onload = simulateResourceLoad;
+    </script>
+</body>
+</html>
+    
+    <script>
+        console.log('Media Pembelajaran Interaktif');
+    </script>
+</body>
+</html>
